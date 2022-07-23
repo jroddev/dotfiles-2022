@@ -1,0 +1,22 @@
+---
+
+- name: Setup TMUX facts
+  set_fact:
+    tmux_dir: '{{ config_directory }}/tmux'
+
+- name: Create TMUX Config directory
+  file:
+    path: '{{ tmux_dir }}' 
+    state: directory
+
+- name: Copy TMUX Config file
+  copy:
+    src: 'files/tmux.conf'
+    dest: '{{ tmux_dir }}/tmux.conf'
+
+- name: Symlink tmux.conf
+  file:
+    src: '{{ tmux_dir }}/tmux.conf'
+    dest: '$HOME/.tmux.conf' 
+    force: true
+    state: link

@@ -1,0 +1,22 @@
+---
+
+- name: Setup Alacritty facts
+  set_fact:
+    alacritty_dir: '{{ config_directory }}/alacritty'
+
+- name: Create Alacritty Config directory
+  file:
+    path: '{{ alacritty_dir }}' 
+    state: directory
+
+- name: Copy Alacritty Config file
+  copy:
+    src: 'files/alacritty.yml'
+    dest: '{{ alacritty_dir }}/alacritty.yml'
+
+- name: Symlink alacritty.yml
+  file:
+    src: '{{ alacritty_dir }}/alacritty.yml'
+    dest: '$HOME/.config/alacritty/alacritty.yml' 
+    force: true
+    state: link

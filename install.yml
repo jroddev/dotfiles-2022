@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - include: 'roles/alacritty/main.yml'
+    # - include: roles/zsh
+    - include: 'roles/tmux/main.yml'
+    # - include: roles/neovim
