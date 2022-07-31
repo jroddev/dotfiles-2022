@@ -21,6 +21,18 @@
     src: 'files/alias.zsh'
     dest: '{{ zsh_dir }}/alias.zsh'
 
+- name: Copy Starship Prompt Config
+  copy:
+    src: 'files/starship.toml'
+    dest: '{{ zsh_dir }}/starship.toml'
+
+- name: Symlink Starship Prompt Config
+  file:
+    src: '{{ zsh_dir }}/starship.toml'
+    dest: '$HOME/.config/starship.toml'
+    force: true
+    state: link
+
 - name: Symlink .zshrc
   file:
     src: '{{ zsh_dir }}/zshrc.zsh'
