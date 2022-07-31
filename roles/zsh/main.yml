@@ -1,0 +1,29 @@
+---
+
+- name: Setup ZSH facts
+  set_fact:
+    zsh_dir: '{{ config_directory }}/zsh'
+
+- name: Create ZSH Config directory
+  file:
+    path: '{{ zsh_dir }}' 
+    state: directory
+
+- name: Copy ZSH RC file
+  vars:
+    zsh_config_dir: '{{ zsh_dir }}'
+  template:
+    src: 'files/zshrc.zsh.j2'
+    dest: '{{ zsh_dir }}/zshrc.zsh'
+
+- name: Copy Alias file
+  copy:
+    src: 'files/alias.zsh'
+    dest: '{{ zsh_dir }}/alias.zsh'
+
+- name: Symlink .zshrc
+  file:
+    src: '{{ zsh_dir }}/zshrc.zsh'
+    dest: '$HOME/.zshrc'
+    force: true
+    state: link

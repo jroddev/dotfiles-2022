@@ -1,0 +1,56 @@
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
+
+# Always attach or create a tmux session
+if [ -n "$PS1" ] && [ -z "$TMUX" ]; then
+  # Create session 'main' or attach to 'main' if already exists.
+  tmux new-session -A -s main
+fi
+
+# Use vi mode
+bindkey -v
+export KEYTIMEOUT=1
+# support ctrl-r history in vi-mode
+bindkey "^R" history-incremental-search-backward
+
+export EDITOR=nvim
+
+alias_file="{{ zsh_config_dir }}/alias.zsh"
+[ -f $alias_file ] && source $alias_file
+
+# https://starship.rs prompt
+eval "$(starship init zsh)"
+
+
+if [[ "$OSTYPE" =~ ^linux ]]; then
+    # Save SSH Password in KWallet
+    if which ksshaskpass >/dev/null 2>&1; then
+      eval $(ssh-agent) >/dev/null
+      SSH_ASKPASS=ksshaskpass ssh-add < /dev/null
+    fi
+
+    # ZSH Plugins
+    # yay -S antigen zsh-autosuggestions:which
+    # source /usr/share/zsh/share/antigen.zsh
+    # antigen use oh-my-zsh 
+    # antigen bundle autoenv
+    # antigen bundle helm
+
+
+    # autoload -Uz compinit
+    # compinit
+    # antigen bundle kubectl
+    # source <(kubectl completion zsh)
+
+    # antigen bundle ripgrep
+    # antigen bundle rust
+    # antigen bundle zsh-users/zsh-syntax-highlighting
+
+    # antigen bundle marlonrichert/zsh-autocomplete
+
+    # antigen apply
+fi
+
+
+
+

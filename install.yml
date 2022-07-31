@@ -3,6 +3,6 @@
   connection: local
   tasks:
     - include: 'roles/alacritty/main.yml'
-    # - include: roles/zsh
+    - include: 'roles/zsh/main.yml'
     - include: 'roles/tmux/main.yml'
-    # - include: roles/neovim
+    # - include: 'roles/neovim/main.yml'
