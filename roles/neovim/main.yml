@@ -1,0 +1,32 @@
+---
+
+- name: Setup NeoVim facts
+  set_fact:
+    neovim_dir: '{{ config_directory }}/neovim'
+
+- name: echo neovim directory
+  debug:
+    msg: 'dir: {{ neovim_dir }}'
+
+- name: Create NeoVim Config directory
+  file:
+    path: '{{ neovim_dir }}' 
+    state: directory
+
+- name: Create NeoVim config files to synchronize
+  copy:
+    src: 'files/'
+    dest: '/tmp/{{ neovim_dir }}'
+
+- name: Synchronize NeoVim config files
+  synchronize:
+      src: '/tmp/{{ neovim_dir }}/'
+      dest: '/{{ neovim_dir }}/'
+      delete: yes
+
+- name: Symlink neovim config directory
+  file:
+    src: '{{ neovim_dir }}'
+    dest: '$HOME/.config/nvim'
+    force: true
+    state: link
