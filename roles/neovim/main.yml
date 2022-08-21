@@ -13,6 +13,11 @@
     path: '{{ neovim_dir }}' 
     state: directory
 
+- name: Clear any past temp runs
+  file:
+    path: '/tmp/{{ neovim_dir }}'
+    state: absent
+
 - name: Create NeoVim config files to synchronize
   copy:
     src: 'files/'

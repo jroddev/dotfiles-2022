@@ -1,8 +1,9 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-# Always attach or create a tmux session
-if [ -n "$PS1" ] && [ -z "$TMUX" ]; then
+# Always attach or create a tmux session in alacritty
+# Do not auto tmux in IntelliJ, VS Code, etc
+if [ -n "$PS1" ] && [ -z "$TMUX" ] && [ "$TERM" = "alacritty" ]; then
   # Create session 'main' or attach to 'main' if already exists.
   tmux new-session -A -s main
 fi

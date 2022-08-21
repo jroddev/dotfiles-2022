@@ -1,4 +1,12 @@
 # Dot files
+##TODO
+- no icons on MacOSX
+Download 'Sauce Code Pro' font from https://www.nerdfonts.com/font-downloads
+Install
+    - SauceCodePro Nerd Font Complete Mono.ttf
+    - SauceCodePro Bold Nerd Font Complete Mono.ttf
+    - SauceCodePro Italic Nerd Font Complete Mono.ttf
+-
 
 
 ### Install

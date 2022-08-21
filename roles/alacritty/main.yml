@@ -10,8 +10,8 @@
     state: directory
 
 - name: Copy Alacritty Config file
-  copy:
-    src: 'files/alacritty.yml'
+  template:
+    src: 'files/alacritty.yml.j2'
     dest: '{{ alacritty_dir }}/alacritty.yml'
 
 - name: Symlink alacritty.yml
