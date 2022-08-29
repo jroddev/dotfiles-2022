@@ -47,10 +47,25 @@ opt.updatetime = 300
 vim.g.noswapfile = true
 
 
--- vim.cmd([[
--- nnoremap <Ctrl-Down> <Ctrl-W><Ctrl-J>
--- nnoremap <Ctrl-Up> <Ctrl-W><Ctrl-K>
--- nnoremap <Ctrl-Right> <Ctrl-W><Ctrl-L>
--- nnoremap <Ctrl-Left> <Ctrl-W><Ctrl-H>
--- ]])
---
+-- Trailing Whitespace
+vim.cmd([[
+" Highlights trailing whitespace
+   highlight ExtraWhitespace ctermbg=red guibg=red
+   match ExtraWhitespace /\s\+$/
+   autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+   autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+   autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+
+"   disabled this as it conflicts with nvim-cursorline
+"   autocmd BufWinLeave * call clearmatches()
+
+" Trims trailing whitespace on save
+   function! TrimWhiteSpace()
+     %s/\s*$//
+       ''
+   endfunction
+   autocmd FileWritePre * call TrimWhiteSpace()
+   autocmd FileAppendPre * call TrimWhiteSpace()
+   autocmd FilterWritePre * call TrimWhiteSpace()
+   autocmd BufWritePre * call TrimWhiteSpace()
+]])

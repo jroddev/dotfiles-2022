@@ -1,8 +1,8 @@
 ---
 - hosts: localhost
   connection: local
-  tasks:
-    - include: 'roles/alacritty/main.yml'
-    - include: 'roles/zsh/main.yml'
-    - include: 'roles/tmux/main.yml'
-    - include: 'roles/neovim/main.yml'
+  roles:
+    - { role: alacritty }
+    - { role: zsh }
+    - { role: tmux }
+    - { role: neovim }

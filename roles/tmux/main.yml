@@ -6,7 +6,7 @@
 
 - name: Create TMUX Config directory
   file:
-    path: '{{ tmux_dir }}' 
+    path: '{{ tmux_dir }}'
     state: directory
 
 - name: Copy TMUX Config file
@@ -14,9 +14,27 @@
     src: 'files/tmux.conf'
     dest: '{{ tmux_dir }}/tmux.conf'
 
+- name: Create TMUX Scripts directory
+  file:
+    path: '{{ tmux_dir }}/scripts'
+    state: directory
+
+- name: Copy TMUX Git Script
+  copy:
+    src: 'files/git-branch.sh'
+    dest: '{{ tmux_dir }}/scripts/git-branch.sh'
+    mode: '0744'
+
+- name: Symlink tmux scripts
+  file:
+    src: '{{ tmux_dir }}'
+    dest: '$HOME/.config/tmux'
+    force: true
+    state: link
+
 - name: Symlink tmux.conf
   file:
     src: '{{ tmux_dir }}/tmux.conf'
-    dest: '$HOME/.tmux.conf' 
+    dest: '$HOME/.tmux.conf'
     force: true
     state: link
