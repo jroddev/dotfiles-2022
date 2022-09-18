@@ -14,12 +14,10 @@ return require('packer').startup(function()
   use 'simrat39/rust-tools.nvim' -- enable most rust-analzer features
 
 
-  -- yay -S yaml-language-server
   use 'redhat-developer/yaml-language-server'
-  -- yay -S bash-language-server
   use 'bash-lsp/bash-language-server'
-  -- yay -S ansible-language-server
   use 'ansible/ansible-language-server'
+  use 'hashicorp/terraform-ls'
 
   use 'hrsh7th/vim-vsnip' -- snippet engine
 

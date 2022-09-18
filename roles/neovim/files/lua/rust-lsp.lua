@@ -41,6 +41,12 @@ nvim_lsp.yamlls.setup {}
 nvim_lsp.bashls.setup{}
 nvim_lsp.ansiblels.setup{}
 
+nvim_lsp.terraformls.setup{}
+vim.api.nvim_create_autocmd({"BufWritePre"}, {
+  pattern = {"*.tf", "*.tfvars"},
+  callback = vim.lsp.buf.formatting_sync,
+})
+
 
 -- Setup Completion
 -- See https://github.com/hrsh7th/nvim-cmp#basic-configuration
@@ -109,7 +115,7 @@ vim.cmd([[
 
 -- Code Actions such as Fix, Apply Suggestion: Alt-Enter
 vim.cmd([[
-   nnoremap <silent> <A-Enter>    <cmd>lua vim.lsp.buf.code_action()<CR> 
+   nnoremap <silent> <A-Enter>    <cmd>lua vim.lsp.buf.code_action()<CR>
 ]])
 
 vim.cmd([[
