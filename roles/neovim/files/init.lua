@@ -11,6 +11,7 @@ require('comment-config')
 require('cursor-line')
 require('status-line')
 require('vimux')
+require('filetype-config')
 
 -- vim.cmd('colorscheme nord')
 vim.cmd('colorscheme nightfox')

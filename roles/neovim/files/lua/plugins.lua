@@ -26,6 +26,10 @@ return require('packer').startup(function()
         run = ':TSUpdate'
     }
 
+
+  use 'nathom/filetype.nvim'
+
+
   -- fuzzy finder
   use 'nvim-lua/popup.nvim'
   use {
