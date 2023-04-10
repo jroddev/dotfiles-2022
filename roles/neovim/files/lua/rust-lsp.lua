@@ -36,6 +36,9 @@ local opts = {
 
 require('rust-tools').setup(opts)
 
+-- put diagnostics inline instead of in a popup
+require("lsp_lines").setup(opts)
+
 
 nvim_lsp.yamlls.setup {}
 nvim_lsp.bashls.setup{}
