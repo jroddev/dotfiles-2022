@@ -49,10 +49,11 @@ return require('packer').startup(function()
   use 'preservim/nerdtree'
   use 'Xuyuanp/nerdtree-git-plugin'
 
-  use 'nvim-lualine/lualine.nvim',
+  use 'nvim-lualine/lualine.nvim'
 
   -- Show diagnostic inline instead of in popup
-  use 'https://git.sr.ht/~whynothugo/lsp_lines.nvim'
+  -- Doesn't work on Mac
+  -- use 'https://git.sr.ht/~whynothugo/lsp_lines.nvim'
 
   use {
     'numToStr/Comment.nvim',
