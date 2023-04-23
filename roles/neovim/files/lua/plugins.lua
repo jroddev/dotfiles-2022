@@ -44,10 +44,16 @@ return require('packer').startup(function()
   use 'arcticicestudio/nord-vim'
   use "EdenEast/nightfox.nvim"
 
-  use 'preservim/nerdtree'
-
   use 'ryanoasis/vim-devicons'
+
+  use 'preservim/nerdtree'
   use 'Xuyuanp/nerdtree-git-plugin'
+
+  use 'nvim-lualine/lualine.nvim'
+
+  -- Show diagnostic inline instead of in popup
+  -- Doesn't work on Mac
+  -- use 'https://git.sr.ht/~whynothugo/lsp_lines.nvim'
 
   use {
     'numToStr/Comment.nvim',
@@ -65,9 +71,6 @@ return require('packer').startup(function()
       }
   }
 
-  use {
-    'nvim-lualine/lualine.nvim',
-    -- requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-  }
+
 end)
 

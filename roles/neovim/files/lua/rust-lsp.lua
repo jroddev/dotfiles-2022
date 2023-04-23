@@ -36,16 +36,21 @@ local opts = {
 
 require('rust-tools').setup(opts)
 
+-- put diagnostics inline instead of in a popup
+-- doesn't work on MAC
+-- require("lsp_lines").setup(opts)
+
 
 nvim_lsp.yamlls.setup {}
 nvim_lsp.bashls.setup{}
 nvim_lsp.ansiblels.setup{}
 
 nvim_lsp.terraformls.setup{}
-vim.api.nvim_create_autocmd({"BufWritePre"}, {
-  pattern = {"*.tf", "*.tfvars"},
-  callback = vim.lsp.buf.formatting_sync,
-})
+-- doesn't work on MAC
+-- vim.api.nvim_create_autocmd({"BufWritePre"}, {
+--   pattern = {"*.tf", "*.tfvars"},
+--   callback = vim.lsp.buf.formatting_sync,
+-- })
 
 
 -- Setup Completion
