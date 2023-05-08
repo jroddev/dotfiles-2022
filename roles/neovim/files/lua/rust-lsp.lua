@@ -41,7 +41,13 @@ require('rust-tools').setup(opts)
 -- require("lsp_lines").setup(opts)
 
 
-nvim_lsp.yamlls.setup {}
+nvim_lsp.yamlls.setup {
+    settings = {
+        yaml = {
+            keyOrdering = false
+        }
+    }
+}
 nvim_lsp.bashls.setup{}
 nvim_lsp.ansiblels.setup{}
 

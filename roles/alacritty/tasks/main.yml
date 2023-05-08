@@ -6,7 +6,7 @@
 
 - name: Create Alacritty Config directory
   file:
-    path: '{{ alacritty_dir }}' 
+    path: '{{ alacritty_dir }}'
     state: directory
 
 - name: Copy Alacritty Config file
@@ -14,9 +14,14 @@
     src: 'files/alacritty.yml.j2'
     dest: '{{ alacritty_dir }}/alacritty.yml'
 
+- name: Create Alacritty dir in .config
+  file:
+    path: '$HOME/.config/alacritty/'
+    state: directory
+
 - name: Symlink alacritty.yml
   file:
     src: '{{ alacritty_dir }}/alacritty.yml'
-    dest: '$HOME/.config/alacritty/alacritty.yml' 
+    dest: '$HOME/.config/alacritty/alacritty.yml'
     force: true
     state: link

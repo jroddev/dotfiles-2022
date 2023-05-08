@@ -49,7 +49,8 @@ brew install \
     rust-analyzer \
     yaml-language-server \
     bash-language-server \
-    ansible-language-server
+    ansible-language-server \
+    tmux
 ```
 Packer on OSX needs to be cloned from GitHub
 ```
