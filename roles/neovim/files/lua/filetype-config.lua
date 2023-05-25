@@ -11,6 +11,7 @@ require("filetype").setup({
             [".*j2"] = "yaml",
             [".*.sh"] = bash_literal,
             [".zsh*"] = bash_literal,
+            [".*.html"] = "html",
         }
     }
 
