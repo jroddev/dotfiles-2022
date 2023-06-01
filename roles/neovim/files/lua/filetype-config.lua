@@ -10,6 +10,7 @@ require("filetype").setup({
         complex = {
             [".*j2"] = "yaml",
             [".*.sh"] = bash_literal,
+            [".*.sh.j2"] = bash_literal,
             [".zsh*"] = bash_literal,
             [".*.html"] = "html",
         }
